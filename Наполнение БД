@@ -1,0 +1,41 @@
+USE gibdd
+GO
+
+create table Cadet
+(
+id_Cadet int not null IDENTITY(1,1) PRIMARY KEY,
+passport bigint not null,
+med_info bigint not null,
+cheque_stateduty bigint not null,
+document_driving_school NCHAR(100) not null
+)
+
+create table Request_Gosuslugi
+(
+id_Request int not null IDENTITY(1,1) PRIMARY KEY,
+verified_acc NCHAR(100) not null,
+id_Cadet INT not null FOREIGN KEY REFERENCES Cadet(id_Cadet)
+)
+
+create table Status_Driving_License
+(
+id_Status int not null IDENTITY(1,1) PRIMARY KEY,
+id_Request INT not null FOREIGN KEY REFERENCES Request_Gosuslugi(id_Request),
+id_Cadet INT not null FOREIGN KEY REFERENCES Cadet(id_Cadet)
+)
+
+create table Employee_GIBDD
+(
+id_Employee int not null IDENTITY(1,1) PRIMARY KEY,
+name_employee NCHAR(100) not null,
+number_badge bigint not null,
+id_Request INT not null FOREIGN KEY REFERENCES Request_Gosuslugi(id_Request)
+)
+
+create table Driving_License
+(
+name_cadet NCHAR(100) not null,
+number_driving_license bigint not null,
+category_of_driving_license NCHAR(100) not null,
+id_Cadet INT not null FOREIGN KEY REFERENCES Cadet(id_Cadet)
+)
