@@ -1,0 +1,58 @@
+USE [gibdd]
+GO
+
+SET NOCOUNT ON
+
+INSERT INTO [dbo].[Cadet]
+([passport], [med_info], [cheque_stateduty], [document_driving_school])
+VALUES
+(6562803569, 1234567890123456, 12345, 'AA N 256546'),
+(6593875938, 9876543210987654, 67890, 'BA N 223146'),
+(6523845938, 2468135791357924, 54321, 'PA N 654654'),
+(6512854938, 8642097531987426, 98765, 'PK N 734125'),
+(6465856938, 5678901234567890, 24680, 'HP N 476123'),
+(6923867638, 3141592653589793, 13579, 'KE N 651274'),
+(6343856438, 7777777777777777, 54320, 'PM N 765312')
+
+INSERT INTO [dbo].[Request_Gosuslugi]
+([verified_acc], [id_Cadet])
+VALUES
+('+', 1),
+('+', 2),
+('+', 3),
+('-', 4),
+('+', 5),
+('-', 6),
+('+', 7)
+
+INSERT INTO [dbo].[Employee_GIBDD]
+([name_employee], [number_badge], [id_Request])
+VALUES
+('Ivan Ivanovich Ivanov', 250422, 1),
+('Petr Petrovich Petrov', 240234, 2),
+('Alexey Nikit Aleksandrovich', 270356, 3),
+('Ivan Ivanovich Ivanov', 270356, 4),
+('Petr Petrovich Petrov', 250422, 5),
+('Petr Petrovich Petrov', 250422, 5)
+
+INSERT INTO [dbo].[Driving_License]
+([name_cadet], [number_driving_license], [category_of_driving_license], [id_Cadet])
+VALUES
+('Ekaterina Aleksandrovna Petrova', 123456789, 'B', 1),
+('Alexei Vladimirovich Smirnov', 987654321, 'B', 2),
+('Maria Dmitrievna Kozlova', 246813579, 'C', 3),
+('Vladimir Sergeevich Nikolaev', 864209753, 'B', 4),
+('Andrey Petrovich Vasiliev', 567890123, 'BC', 5),
+('Olga Igorevna Mikhailova', 314159265, 'AB', 6),
+('Dmitry Alexandrovich Sokolov', 888888888, 'ABC', 7)
+
+INSERT INTO [dbo].[Status_Driving_License]
+([id_Request], [id_Cadet])
+VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6),
+(7, 7)
